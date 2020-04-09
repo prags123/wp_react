@@ -59,7 +59,7 @@ class Rae_Register_Get_Posts_Catgory_Api {
 		$response      = [];
 		$parameters    = $request->get_params();
 		$posts_page_no = ! empty( $parameters['page_no'] ) ? intval( sanitize_text_field( $parameters['page_no'] ) ) : '';
-		$posts_category = ! empty( $parameters['category'] ) ? intval( sanitize_text_field( $parameters['category'] ) ) : '';
+		$posts_category = ! empty( $parameters['category'] ) ? sanitize_text_field( $parameters['category'] ) : '';
 
 		// Error Handling.
 		$error = new WP_Error();
@@ -116,9 +116,10 @@ class Rae_Register_Get_Posts_Catgory_Api {
 			'fields'                 => 'ids',
 			'orderby'                => 'date',
 			'paged'                  => $page_no,
+			'category_name'		 => $post_category
 			'update_post_meta_cache' => false,
 			'update_post_term_cache' => false,
-			'category_name'		 => $post_category
+			
 
 		];
 
