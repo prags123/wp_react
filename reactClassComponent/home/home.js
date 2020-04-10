@@ -88,5 +88,3 @@ Home.propTypes = {
 export default compose(
     withStyles(blogStyles)
 )(withRouter(Home));
-
-// https://www.youtube.com/watch?v=8ehO3Sk7yRM
